@@ -6,7 +6,7 @@
 /*   By: aoperacz <aoperacz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 00:53:07 by aoperacz          #+#    #+#             */
-/*   Updated: 2025/06/22 02:18:54 by aoperacz         ###   ########.fr       */
+/*   Updated: 2025/06/22 02:22:50 by aoperacz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ int	main(int argc, char **argv)
 		return (cleanup_and_exit(board, row_count, "Invalid map\n", 1));
 	if (check_validate(board, row_count))
 		return (cleanup_and_exit(board, row_count, "Invalid map\n", 1));
+	launch_game(board,row_count);
 	return (cleanup_and_exit(board, row_count, NULL, 0));
 }

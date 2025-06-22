@@ -6,7 +6,7 @@
 /*   By: aoperacz <aoperacz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 01:07:52 by aoperacz          #+#    #+#             */
-/*   Updated: 2025/06/22 01:56:22 by aoperacz         ###   ########.fr       */
+/*   Updated: 2025/06/22 02:31:04 by aoperacz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,33 @@ typedef enum e_game_elems
 	Floor = '0',
 	Col = 'C',
 	Exit = 'E',
-}		t_elems;
+}			t_elems;
 
-int		check_square(char **board, int count);
-int		check_valid_elem(char *line);
-int		check_walls(char **board, int rows);
-int		count_chars(char **board, int *col, int rows);
-int		check_validate(char **board, int rows);
-void	free_board(char **board, int rows);
-int		is_game_elem(char c);
-void	remove_newline(char **s);
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+
+	void	*playa;
+	void	*wall;
+	void	*floor;
+	void	*col;
+	void	*exit;
+
+	int		player_x;
+	int		player_y;
+	int		col;
+	int		p;
+	int		e;
+
+}			t_game;
+
+int			check_square(char **board, int count);
+int			check_valid_elem(char *line);
+int			check_walls(char **board, int rows);
+int			count_chars(char **board, int *col, int rows);
+int			check_validate(char **board, int rows);
+void		free_board(char **board, int rows);
+int			is_game_elem(char c);
+void		remove_newline(char **s);
 #endif // SO_LONG_H
