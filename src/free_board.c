@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   free_board.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoperacz <aoperacz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 15:39:33 by aoperacz          #+#    #+#             */
-/*   Updated: 2025/06/22 01:37:10 by aoperacz         ###   ########.fr       */
+/*   Created: 2025/06/22 00:14:24 by aoperacz          #+#    #+#             */
+/*   Updated: 2025/06/22 01:01:20 by aoperacz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-char	*ft_strdup(const char *s)
+void	free_board(char **board, int rows)
 {
-	int		i;
-	char	*str;
+	int	i;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	str = (char *)malloc(i * sizeof(char) + 1);
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	i = -1;
+	while (++i < rows)
+		free(board[i]);
 }
-
-// int	main(void)
-// {
-// 	char	*hh;
-
-// 	hh = NULL;
-// 	printf("%s", ft_strdup(hh));
-// }

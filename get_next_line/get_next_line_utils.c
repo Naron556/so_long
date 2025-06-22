@@ -6,39 +6,45 @@
 /*   By: aoperacz <aoperacz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:22:27 by aoperacz          #+#    #+#             */
-/*   Updated: 2025/06/21 00:51:47 by aoperacz         ###   ########.fr       */
+/*   Updated: 2025/06/22 01:42:31 by aoperacz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strdup1(const char *sauce, int num_char)
 {
-	unsigned long	i;
-	unsigned long	j;
-	char			*res;
+	int		itr_th_sauce;
+	char	*duplicate;
 
-	i = 0;
-	res = (char *)malloc ((ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!res)
+	if (!sauce)
 		return (NULL);
-	while (s1[i])
+	duplicate = malloc((num_char + 1) * sizeof(char));
+	if (duplicate == NULL)
+		return (NULL);
+	itr_th_sauce = 0;
+	while (sauce[itr_th_sauce] != '\0' && itr_th_sauce != num_char)
 	{
-		res[i] = s1[i];
-		i++;
+		duplicate[itr_th_sauce] = sauce[itr_th_sauce];
+		itr_th_sauce++;
 	}
-	j = 0;
-	while (s2[j])
-	{
-		res[i] = s2[j];
-		i++;
-		j++;
-	}
-	res[i] = '\0';
-	return (res);
+	duplicate[itr_th_sauce] = '\0';
+	return (duplicate);
 }
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strlen1(const char *str)
+{
+	int	str_len;
+
+	if (str == NULL)
+		return (0);
+	str_len = 0;
+	while (str[str_len] != '\0')
+		str_len++;
+	return (str_len);
+}
+
+char	*ft_strchr1(const char *s, int c)
 {
 	int	i;
 
@@ -54,41 +60,29 @@ char	*ft_strchr(const char *s, int c)
 	return ((void *)0);
 }
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strjoin1(const char *left, const char *right)
 {
-	unsigned char	*str;
-	unsigned long	i;
+	int		itr_th_left;
+	int		itr_th_right;
+	char	*joined;
 
-	i = 0;
-	str = s;
-	while (i < n)
-	{
-		str[i] = '\0';
-		i++;
-	}
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	size_t	tsize;
-	void	*arr;
-
-	tsize = nmemb * size;
-	arr = malloc(tsize);
-	if (arr == NULL)
+	if (left == NULL && right == NULL)
 		return (NULL);
-	ft_bzero(arr, tsize);
-	return (arr);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != 0)
+	joined = malloc((ft_strlen1(left) + ft_strlen1(right) + 1) * sizeof(char));
+	if (joined == NULL)
+		return (NULL);
+	itr_th_left = 0;
+	while (left != NULL && left[itr_th_left] != '\0')
 	{
-		i++;
+		joined[itr_th_left] = left[itr_th_left];
+		itr_th_left++;
 	}
-	return (i);
+	itr_th_right = 0;
+	while (right != NULL && right[itr_th_right] != '\0')
+	{
+		joined[itr_th_left + itr_th_right] = right[itr_th_right];
+		itr_th_right++;
+	}
+	joined[itr_th_left + itr_th_right] = '\0';
+	return (joined);
 }

@@ -14,7 +14,7 @@ $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -Iget_next_line.h -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)

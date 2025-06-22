@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoperacz <aoperacz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 15:39:33 by aoperacz          #+#    #+#             */
-/*   Updated: 2025/06/22 01:37:10 by aoperacz         ###   ########.fr       */
+/*   Created: 2025/06/22 00:18:30 by aoperacz          #+#    #+#             */
+/*   Updated: 2025/06/22 01:06:59 by aoperacz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+int	is_game_elem(char c)
 {
-	int		i;
-	char	*str;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	str = (char *)malloc(i * sizeof(char) + 1);
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	return (c == Playa || c == Wall || c == Floor || c == Exit || c == Col);
 }
 
-// int	main(void)
-// {
-// 	char	*hh;
+void	remove_newline(char **s)
+{
+	int	len;
 
-// 	hh = NULL;
-// 	printf("%s", ft_strdup(hh));
-// }
+	len = ft_strlen(*s);
+	if (len > 0 && (*s)[len - 1] == '\n')
+		(*s)[len - 1] = '\0';
+}
