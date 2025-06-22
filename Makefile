@@ -53,7 +53,7 @@ clean:
 	$(MAKE) -C $(LIBFT) clean
 	$(MAKE) -C $(PRINTF) clean
 	$(MAKE) -C $(GNL_DIR) clean
-	$(MAKE) -C $(MLX_PATH) clean
+
 
 fclean: clean
 	$(RM) $(NAME)
